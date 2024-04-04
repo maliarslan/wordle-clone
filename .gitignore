@@ -396,3 +396,11 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Editor directories and files
+.idea
+.DS_Store
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
