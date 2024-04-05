@@ -1,14 +1,14 @@
-import LightModeIcon from "@mui/icons-material/LightMode";
+import { ThemeWrapperContext } from "@/components/ThemeWrapper";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 import MUIAppBar from "@mui/material/AppBar";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import { useTheme } from "@mui/material/styles";
 import { useContext } from "react";
-import { ThemeWrapperContext } from "../ThemeWrapper/ThemeWrapper";
 
-const AppBar = () => {
+export const AppBar = () => {
 	const theme = useTheme();
 	const themeUtils = useContext(ThemeWrapperContext);
 
@@ -27,5 +27,3 @@ const AppBar = () => {
 		</MUIAppBar>
 	);
 };
-
-export default AppBar;
