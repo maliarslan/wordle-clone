@@ -2,12 +2,8 @@ import { darkTheme } from "@/theme/dark";
 import { lightTheme } from "@/theme/light";
 import { PaletteMode, useMediaQuery } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-import { createContext, PropsWithChildren, useMemo, useState } from "react";
-
-export const ThemeWrapperContext = createContext({
-	toggleColorMode: () => {
-	},
-});
+import { PropsWithChildren, useMemo, useState } from "react";
+import { ThemeWrapperContext } from "./ThemeWrapperContext";
 
 export const ThemeWrapper = ({ children }: PropsWithChildren) => {
 	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");

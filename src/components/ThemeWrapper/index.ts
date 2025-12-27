@@ -1,1 +1,2 @@
-export { ThemeWrapper, ThemeWrapperContext } from "./ThemeWrapper";
+export { ThemeWrapper } from "./ThemeWrapper";
+export { ThemeWrapperContext } from "./ThemeWrapperContext";
