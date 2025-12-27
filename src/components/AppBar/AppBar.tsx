@@ -13,7 +13,7 @@ export const AppBar = () => {
 	const themeUtils = useContext(ThemeWrapperContext);
 
 	return (
-		<MUIAppBar position="static" component={"nav"}>
+		<MUIAppBar position="static" component="nav">
 			<Toolbar variant="dense" sx={{ justifyContent: "space-between" }}>
 				<Divider />
 				<IconButton
