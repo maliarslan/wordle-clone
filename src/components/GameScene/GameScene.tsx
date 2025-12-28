@@ -2,7 +2,7 @@ import { Stack } from "@mui/material";
 import Letter from "@/components/Letter/Letter.tsx";
 import { Row } from "@/components/Row/Row.tsx";
 import { useState } from "react";
-import { useKeyPress } from "@/useKeyPress.ts";
+import { useKeyPress } from "@/components/GameScene/useKeyPress.ts";
 
 const WORDLE = "wordle";
 const TRIALS = 5;
@@ -31,46 +31,75 @@ const GameScene = () => {
 
 		// submit row
 	};
-	const handleBackSpace = () => {
-		// const row = board[turn.row];
 
-		// handle backspace
+	const handleBackspace = () => {
+		if (turn.cell === 0) {
+			return;
+		}
+
+		const newBoard = board.map((row, rowIndex) => {
+			if (rowIndex === turn.row) {
+				return row.map((cell, cellIndex) => {
+					if (cellIndex === turn.cell - 1) {
+						return "";
+					}
+					return cell;
+				});
+			} else {
+				return row;
+			}
+		});
+
+		const newTurn = {
+			...turn,
+			cell: turn.cell - 1
+		};
+
+		setBoard(newBoard);
+
+		setTurn(newTurn);
+	};
+
+	const handleKeyPress = (key: string) => {
+		const newBoard = board.map((row, rowIndex) => {
+			if (rowIndex === turn.row) {
+				return row.map((cell, cellIndex) => {
+					if (cellIndex === turn.cell) {
+						return key;
+					}
+					return cell;
+				});
+			} else {
+				return row;
+			}
+		});
+
+		const newTurn = {
+			...turn,
+			cell: turn.cell + 1
+		};
+
+		setBoard(newBoard);
+
+		setTurn(newTurn);
 	};
 
 	const handleKeyDown = (key: string) => {
 		if (key === "Enter") {
 			handleSubmit();
-		}
-
-		if (key === "Backspace") {
-			handleBackSpace();
-		}
-
-		if (turn.row >= WORDLE.length) {
 			return;
 		}
 
-		setBoard((prevState) => {
-			return prevState.map((row, rowIndex) => {
-				if (rowIndex === turn.row) {
-					return row.map((cell, cellIndex) => {
-						if (cellIndex === turn.cell) {
-							return key;
-						}
-						return cell;
-					});
-				} else {
-					return row;
-				}
-			});
-		});
+		if (key === "Backspace") {
+			handleBackspace();
+			return;
+		}
 
-		setTurn((prevState) => {
-			return {
-				...prevState,
-				cell: prevState.cell++
-			};
-		});
+		if (turn.cell >= WORDLE.length) {
+			return;
+		}
+
+		handleKeyPress(key);
 	};
 
 	useKeyPress(handleKeyDown);
