@@ -3,7 +3,7 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
-import {defineConfig, globalIgnores} from 'eslint/config'
+import { defineConfig, globalIgnores } from 'eslint/config'
 import stylistic from '@stylistic/eslint-plugin'
 
 const stylisticConfig = stylistic.configs.customize({
@@ -12,6 +12,7 @@ const stylisticConfig = stylistic.configs.customize({
     semi: true,
     jsx: true,
     commaDangle: "only-multiline",
+    braceStyle: "1tbs",
 })
 export default defineConfig([
     globalIgnores(['dist']),

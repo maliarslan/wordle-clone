@@ -20,7 +20,7 @@ const Letter = ({ letter, letterIndex, wordle }: LetterProps) => {
 		return letter === wordle[letterIndex]
 			? "green"
 			: wordle.includes(letter)
-				? "yellow"
+				? "#b7b75ae0"
 				: "red";
 	}, []);
 
